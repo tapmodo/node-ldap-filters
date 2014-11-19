@@ -1,0 +1,31 @@
+{
+  "name": "ldap-filters",
+  "version": "0.0.1",
+  "description": "Library for generating, parsing, and evaluating LDAP filters",
+  "main": "parser_test.js",
+  "dependencies": {
+    "soundex": "~0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tapmodo/node-ldap-filters.git"
+  },
+  "keywords": [
+    "ldap",
+    "filter",
+    "parser",
+    "generate",
+    "evaluate",
+    "match"
+  ],
+  "author": "Tapmodo <khallman@tapmodo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tapmodo/node-ldap-filters/issues"
+  },
+  "homepage": "https://github.com/tapmodo/node-ldap-filters"
+}
