@@ -14,18 +14,19 @@
 
 <INITIAL>\s+			/**/
 <INITIAL>"("			%{
-							var upcoming = this.upcomingInput();
-							switch (upcoming[1]) {
-							case '&':
-							case '|':
-							case '!':
-							break;
-							default:
-								this.begin("ATTR");
-							break;
-							}
-							return "LEFT_PAREN";
-						%}
+    var upcoming = this.upcomingInput();
+    switch (upcoming[1]) {
+      case '&':
+      case '|':
+      case '!':
+        break;
+
+      default:
+        this.begin("ATTR");
+        break;
+    }
+    return "LEFT_PAREN";
+  %}
 <INITIAL>")"			return "RIGHT_PAREN";
 <INITIAL>"&"			return "AND";
 <INITIAL>"|"			return "OR";
@@ -49,7 +50,7 @@
 /lex
 
 %{
-	var ast = require("./ast");
+  var Filter = require('./index');
 %}
 
 %%
@@ -57,15 +58,14 @@
 done
 	: filter
 		{
-			ast.complete($1);
+      return $1;
 		}
 	;
 
 filter
 	: LEFT_PAREN filter_comp RIGHT_PAREN
 		{
-			var filter = ast.createFilter($2);
-			$$ = filter;
+			$$ = $2;
 		}
 	;
 
@@ -91,39 +91,32 @@ filter_comp
 and
 	: AND filter_list
 		{ 
-			var logical = ast.createLogical("and");
-			logical.args = $2;
-			$$ = logical;
+      $$ = Filter.AND($2);
 		}
 	;
 
 or
 	: OR filter_list
 		{
-			var logical = ast.createLogical("or");
-			logical.args = $2;
-			$$ = logical;
+      $$ = Filter.OR($2);
 		}
 	;
 
 not
 	: NOT filter
 		{
-			var logical = ast.createLogical("not");
-			logical.args = $2;
-			$$ = logical;
+      $$ = Filter.NOT($2);
 		}
 	;
 
 filter_list
 	: filter
 		{
-			var filterList = ast.createFilterList($1);
-			$$ = filterList;
+			$$ = [ $1 ];
 		}
 	| filter filter_list
 		{
-			$2.prepend($1);
+      $2.unshift($1);
 			$$ = $2;
 		}
 	;
@@ -142,49 +135,40 @@ operation
 some_op
 	: ATTR_STR filter_type value_str
 		{
-			$2.attr = $1;
-			$2.value = $3;
-			$$ = $2;
+      $$ = new Filter($1,$2,$3);
 		}
 	| ATTR_STR filter_type_ambiguous value_str  /* This could be equal or substring */
 		{
-			$2.attr = $1;
-			$$ = $2.setValue($3);
+      $$ = new Filter($1,$2,$3);
 		}
 	;
 
 filter_type
 	: APPROX
 		{
-			var op = ast.createOperation("approx");
-			$$ = op;
+			$$ = '~=';
 		}
 	| GREATER_EQ
 		{
-			var op = ast.createOperation("gte");
-			$$ = op;
+			$$ = '>=';
 		}
 	| LESS_EQ
 		{
-			var op = ast.createOperation("lte");
-			$$ = op;
+			$$ = '<=';
 		}
 	;
 
 filter_type_ambiguous
 	: EQUAL
 		{
-			var op = ast.createOperation("equalOrSubstr");
-			$$ = op;
+			$$ = '=';
 		}
 	;
 
 present
 	: ATTR_STR EQ_STAR
 		{
-			var op = ast.createOperation("present");
-			op.attr = $1;
-			$$ = op;
+      $$ = Filter.attribute($1).isPresent();
 		}
 	;
 
