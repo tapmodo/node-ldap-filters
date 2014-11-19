@@ -50,7 +50,7 @@
 /lex
 
 %{
-  var Filter = require('./index');
+  var Filter = require('./filter');
 %}
 
 %%
