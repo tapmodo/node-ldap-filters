@@ -6,9 +6,12 @@
   "dependencies": {
     "soundex": "~0.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 5000 test/*js"
   },
   "repository": {
     "type": "git",
