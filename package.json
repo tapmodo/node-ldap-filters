@@ -2,7 +2,7 @@
   "name": "ldap-filters",
   "version": "0.1.0",
   "description": "Library for generating, parsing, and evaluating LDAP filters",
-  "main": "parser_test.js",
+  "main": "index.js",
   "dependencies": {
     "soundex": "~0.2.1"
   },
