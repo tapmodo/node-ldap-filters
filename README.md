@@ -98,10 +98,10 @@ There are three ways to run the tests:
 # Run tests with npm
 npm test
 
-# Run test with "make"
+# Run tests with "make"
 make test
 
-# Run test manually
+# Run tests manually
 mocha test/*.js
 ```
 
@@ -114,7 +114,7 @@ you must have jison installed globally.
 # Install jison globally
 npm install -g jison
 
-#Build with "make"
+# Build with "make"
 make parser
 
 # Build manually with jison
