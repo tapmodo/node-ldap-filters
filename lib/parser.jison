@@ -168,7 +168,7 @@ filter_type_ambiguous
 present
 	: ATTR_STR EQ_STAR
 		{
-      $$ = Filter.attribute($1).isPresent();
+      $$ = Filter.attribute($1).present();
 		}
 	;
 
