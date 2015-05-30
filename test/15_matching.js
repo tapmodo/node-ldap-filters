@@ -1,7 +1,6 @@
 var should = require('chai').should();
 var Filter = require('../index');
 var expect = require('chai').expect;
-//var assert = require('chai').assert;
 
 describe('Matching',function(){
   
