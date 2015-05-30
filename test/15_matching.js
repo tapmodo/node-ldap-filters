@@ -143,6 +143,7 @@ describe('Matching',function(){
     var filter = Filter.attribute('info').equalTo('*(test)*');
     expect(filter.match({info:'*(test)*'})).to.be.true;
     expect(filter.match({info:'(test)'})).to.be.false;
+    expect(filter.match({})).to.be.false;
     done();
   });
 
@@ -166,6 +167,8 @@ describe('Matching',function(){
 
     data.objectClass = [ 'person', 'inetMailObject' ];
     expect(filter.match(data)).to.be.false;
+
+    expect(filter.match({})).to.be.false;
 
     done();
   });
