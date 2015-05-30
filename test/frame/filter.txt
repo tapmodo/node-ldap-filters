@@ -1,0 +1,16 @@
+(&
+    (|
+        (costcenter=6W8F0*)
+        (costcenter=6H8F0D*)
+        (costcenter=6J8F0D*)
+        (costcenter=AC8FLD*)
+        (&
+            (|(costcenter=EY8F0D*)(costcenter=AC8F0D*))
+            (uuid3=*)
+        )
+    )
+    (|
+        (!(organizationalStatus=%))
+        (!(organizationalStatus=*))
+    )
+)
