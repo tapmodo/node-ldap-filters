@@ -24,19 +24,17 @@ describe('Parsing',function(){
     done();
   });
 
-  it('perform a match against a parsed filter',function(done){
+  it('matching against parsed filter',function(done){
+    // Test for a match
     var filter = '(&(sn=jensen)(gn=jenny))';
     var parsed = Filter.parse(filter);
     var data = { sn: 'Jensen', gn: 'Jenny' };
     expect(parsed.match(data)).to.be.true;
-    done();
-  });
 
-  it('non-matching data does not match parsed filter',function(done){
-    var filter = '(&(sn=jensen)(gn=jenny))';
-    var parsed = Filter.parse(filter);
-    var data = { sn: 'Jensen' };
+    // Non-match
+    data = { sn: 'Jensen' };
     expect(parsed.match(data)).to.be.false;
+
     done();
   });
 
