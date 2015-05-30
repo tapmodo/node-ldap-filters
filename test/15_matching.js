@@ -75,6 +75,27 @@ describe('Matching',function(){
     done();
   });
 
+  it ('attribute less than or equal',function(done){
+
+    // Numeric
+    var filter = Filter.attribute('age').lte('5');
+    expect(filter.match({age:5})).to.be.true;
+    expect(filter.match({age:'5'})).to.be.true;
+    expect(filter.match({age:6})).to.be.false;
+    expect(filter.match({age:'6'})).to.be.false;
+    expect(filter.match({age:'4'})).to.be.true;
+    expect(filter.match({age:4})).to.be.true;
+    expect(filter.match({})).to.be.false;
+
+    // Lexical
+    filter = Filter.attribute('sn').lte('bell');
+    expect(filter.match({sn:'ace'})).to.be.true;
+    expect(filter.match({sn:'bell'})).to.be.true;
+    expect(filter.match({sn:'call'})).to.be.false;
+
+    done();
+  });
+
   it('basic approx test ("sounds like")',function(done){
     var filter = Filter.attribute('gn').approx('jenny');
     expect(filter.match({gn:'Jeni'})).to.be.true;
