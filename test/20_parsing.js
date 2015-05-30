@@ -5,6 +5,11 @@ var assert = require('chai').assert;
 
 describe('Parsing',function(){
 
+  // To test the parsing, a correctly written filter is parsed and
+  // written back to a string, then compared to the original input.
+  // While this is probably a good way to test correct parsing, it
+  // doesn't test that the parsed object is exactly what is expected.
+  // I've concluded this type of problem is the bane of unit testing.
   it('parse small filter',function(done){
     var filter = '(sn=smith)';
     var parsed = Filter.parse(filter);

@@ -96,6 +96,16 @@ describe('Matching',function(){
     done();
   });
 
+
+  // IMO Soundex isn't a really intelligent underlying algorithm;
+  // but I don't think people really use the approximate match
+  // very often in real world situations. Part of the reason is
+  // probably due to the fact the actual behavior is not
+  // well defined and left up to the server implementation.
+  //
+  // See this page: https://www.ldap.com/ldap-filters
+  //   "Many servers use a 'sounds like' mechanism with an algorithm
+  //     based on Soundex or one of the Metaphone variants."
   it('basic approx test ("sounds like")',function(done){
     var filter = Filter.attribute('gn').approx('jenny');
     expect(filter.match({gn:'Jeni'})).to.be.true;
@@ -103,6 +113,8 @@ describe('Matching',function(){
     expect(filter.match({gn:'Ricky'})).to.be.false;
     done();
   });
+
+  // Aggregate filters
 
   it('aggregate AND',function(done){
     var filter = Filter.AND([
@@ -147,6 +159,7 @@ describe('Matching',function(){
     done();
   });
 
+  // This is kind of a mishmash
   it('complex filter and object match',function(done){
     var filter = Filter.AND([
       Filter.attribute('active').equalTo('1'),
