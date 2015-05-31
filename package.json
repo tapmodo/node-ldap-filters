@@ -1,6 +1,6 @@
 {
   "name": "ldap-filters",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Library for generating, parsing, and evaluating LDAP filters",
   "main": "index.js",
   "dependencies": {
