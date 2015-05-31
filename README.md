@@ -124,6 +124,6 @@ jison lib/parser.jison -o lib/parser.js
 ## Credits
 
 The jison parser source was originally written by
-[tantaman](http://github.com/tantaman/) found in the
-[DATS-DAP](/tantaman/DATS-DAP) repository.
+[tantaman](https://github.com/tantaman/) found in the
+[DATS-DAP](https://github.com/tantaman/DATS-DAP) repository.
 
