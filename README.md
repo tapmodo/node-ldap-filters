@@ -84,8 +84,8 @@ console.log(parsed.match(data));
 
 ## Unit Tests
 
-A (currently incomplete) test suite is included. To run it, you will
-need to have mocha and chai installed. Mocha should be installed globally.
+A complete test suite is included. To run it, you will
+need to have mocha and chai installed. Mocha should be installed globally (need sudo?).
 
 ```bash
 npm install -g mocha
@@ -111,7 +111,7 @@ The parser is built with **jison**. To re-build the parser,
 you must have jison installed globally.
 
 ```bash
-# Install jison globally
+# Install jison globally (need sudo?)
 npm install -g jison
 
 # Build with "make"
