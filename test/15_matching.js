@@ -26,6 +26,10 @@ describe('Matching',function(){
     expect(filter.match({sn:'smith'})).to.be.true;
     expect(filter.match({sn:'jones'})).to.be.true;
     expect(filter.match({gn:'jim'})).to.be.false;
+    filter = Filter.parse('(sn=*)');
+    expect(filter.match({sn:'smith'})).to.be.true;
+    expect(filter.match({sn:'jones'})).to.be.true;
+    expect(filter.match({gn:'jim'})).to.be.false;
     done();
   });
 

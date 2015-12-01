@@ -31,7 +31,6 @@
 <INITIAL>"&"			return "AND";
 <INITIAL>"|"			return "OR";
 <INITIAL>"!"			return "NOT";
-<INITIAL>"=*"			return "EQ_STAR";
 <INITIAL>"~="			this.begin("VALUE"); return "APPROX";
 <INITIAL>">="			this.begin("VALUE"); return "GREATER_EQ";
 <INITIAL>"<="			this.begin("VALUE"); return "LESS_EQ";
@@ -162,13 +161,6 @@ filter_type_ambiguous
 	: EQUAL
 		{
 			$$ = '=';
-		}
-	;
-
-present
-	: ATTR_STR EQ_STAR
-		{
-      $$ = Filter.attribute($1).present();
 		}
 	;
 

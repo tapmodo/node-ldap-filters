@@ -44,5 +44,16 @@ describe('Parsing',function(){
     done();
   });
 
+  /* Issue #1 */
+  it('parses substring matches beginning with asterisk',function(done){
+    var filter = '(sn=*smith*)';
+    var parsed = Filter.parse(filter);
+    parsed.type.should.equal('filter');
+    parsed.attrib.should.equal('sn');
+    parsed.comp.should.equal('=');
+    parsed.value.should.equal('*smith*');
+    done();
+  });
+
 });
 
