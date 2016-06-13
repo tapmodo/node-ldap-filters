@@ -67,6 +67,35 @@ var input = '(&(givenName=jenny)(sn=jensen))';
 Filter.parse(input);
 ```
 
+### Output/print
+
+Whether you've created a filter programatically or by parsing a filter, you
+can output with `toString()` method or by concatenating with a string, like so:
+
+    query.toString()
+    query + ''
+
+If you pass a value of `true` or a numeric value to `toString()`, the
+output will be beautified:
+
+    query.toString(true)
+    query.toString(2)
+
+Will result in the following output:
+
+```
+(&
+    (givenName=jenny)
+    (sn=jensen)
+    (|
+        (c=us)
+        (st=ontario)
+    )
+)
+```
+
+A value of `true` will use `Filter.indent` property, which defaults to 4.
+
 ### Evaluate data against a filter
 
 Test if (object) data matches a given filter. The filter can be one
