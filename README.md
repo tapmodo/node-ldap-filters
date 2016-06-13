@@ -75,13 +75,17 @@ can output with `toString()` method or by concatenating with a string, like so:
     query.toString()
     query + ''
 
+This will result in compacted output with no whitespace like:
+
+    (&(givenName=jenny)(sn=jensen)(|(c=us)(st=ontario)))
+
 If you pass a value of `true` or a numeric value to `toString()`, the
 output will be beautified:
 
     query.toString(true)
     query.toString(2)
 
-Will result in the following output:
+Will result in similar output to the following output:
 
 ```
 (&
