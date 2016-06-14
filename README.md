@@ -72,20 +72,20 @@ Filter.parse(input);
 Whether you've created a filter programatically or by parsing a filter, you
 can output with `toString()` method or by concatenating with a string, like so:
 
-    query.toString()
-    query + ''
+    filter.toString()
+    filter + ''
 
 This will result in compacted output with no whitespace like:
 
     (&(givenName=jenny)(sn=jensen)(|(c=us)(st=ontario)))
 
-If you pass a value of `true` or a numeric value to `toString()`, the
-output will be beautified:
+If you pass a value of `true` or a numeric indentation value to
+`toString()`, the output will be beautified with space indentation.
 
-    query.toString(true)
-    query.toString(2)
+    filter.toString(true)
+    filter.toString(2)
 
-Will result in similar output to the following output:
+Will result in similar output to the following:
 
 ```
 (&
@@ -99,6 +99,7 @@ Will result in similar output to the following output:
 ```
 
 A value of `true` will use `Filter.indent` property, which defaults to 4.
+The indentation character defaults to a space, see `Filter.indent_char`
 
 ### Evaluate data against a filter
 
