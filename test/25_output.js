@@ -31,6 +31,30 @@ describe('Output',function(){
     );
     done();
   });
-});
 
+  it('indents with custom string',function(done){
+    parsed.toString(2,null,'\t').should.be.equal(
+      '(&\n\t\t(givenName=jenny)\n\t\t(sn=jensen)\n\t\t(|\n\t\t\t\t(c=us)\n\t\t\t\t(st=ontario)\n\t\t)\n)'
+    );
+    done();
+  });
+
+  it('indents with custom string (global setting)',function(done){
+    var old = Filter.indent_char;
+    Filter.indent_char = '\t';
+    parsed.toString(2).should.be.equal(
+      '(&\n\t\t(givenName=jenny)\n\t\t(sn=jensen)\n\t\t(|\n\t\t\t\t(c=us)\n\t\t\t\t(st=ontario)\n\t\t)\n)'
+    );
+    Filter.indent_char = old;
+    done();
+  });
+
+  it('fails if indent string not a string',function(done){
+    assert.throws(function(){
+      parsed.toString(2,null,1);
+    }, Error);
+    done();
+  });
+
+});
 
