@@ -55,5 +55,11 @@ describe('Parsing',function(){
     done();
   });
 
+  it('fails on incorrect format past first correct filter parse',function(done){
+    var filter = '(&(sn=smith))\n(uuid=3) f';
+    assert.throws(function(){Filter.parse(filter);}, Error);
+    done();
+  });
+
 });
 
