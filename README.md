@@ -45,6 +45,20 @@ Various methods can be used to build simple filters:
   * **.approx(value)** - tests if value is approximate match `(attr~=value)`
   * **.gte(value)** - tests if value is greater than or equal `(attr>=value)`
   * **.lte(value)** - tests if value is less than or equal `(attr<=value)`
+  * **.raw(value)** - add an raw (escaped) attribute value `(attr=value)`
+
+**Added in 2.x** The `.raw` method is useful for building filters that
+have complex substring matches not suitable for `.startsWith()`,
+`.endsWith()`, or `.contains()` — however, you will need to escape
+any values that require escaping. This can be done using
+`Filter.escape()` like so:
+
+```javascript
+var match_value = '*' + Filter.escape('James (Jimmy)') + '*';
+var filter = Filter.attribute('cn').raw(match_value);
+
+match_value == '*James \\28Jimmy\\29*' // true
+```
 
 #### Aggregate methods
 
