@@ -190,5 +190,23 @@ describe('Matching',function(){
     done();
   });
 
+  it('matches substrings with multiple *\'s',function(done){
+    var filter = Filter.attribute('cn').raw('*jen* jo*e*');
+    expect(filter.match({ cn: 'Jenny Jones' })).to.be.true;
+    done();
+  });
+
+  it('match embedded escape characters',function(done){
+    var filter = Filter.attribute('cn').raw('jenny\\2a \\28jones\\29 \\5c');
+    expect(filter.match({ cn: 'Jenny* (Jones) \\' })).to.be.true;
+    done();
+  });
+
+  it('matches embedded escape characters with substring',function(done){
+    var filter = Filter.attribute('cn').raw('*jenny\\2a j*s*');
+    expect(filter.match({ cn: 'Jenny* Jones' })).to.be.true;
+    done();
+  });
+
 });
 
