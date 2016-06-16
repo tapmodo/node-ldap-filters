@@ -56,5 +56,7 @@ describe('Output',function(){
     done();
   });
 
+  it('respects collapse_not setting');
+
 });
 
