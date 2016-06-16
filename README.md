@@ -140,7 +140,7 @@ npm install -g mocha
 npm install chai
 ```
 
-There are three ways to run the tests:
+Tests can be run from npm or manually with mocha:
 
 ```bash
 # Run tests with npm
@@ -152,23 +152,25 @@ mocha test/*.js
 
 ## Building
 
-The parser is built with **jison**. To re-build the parser,
-you must have jison installed globally.
+The parser is built with **pegjs**. To re-build the parser,
+you'll need the pegjs dev dependency installed.
 
 ```bash
-# Install jison globally (need sudo?)
-npm install -g jison
-
 # Build parser with npm
 npm run build
 
-# Build manually with jison
-jison lib/parser.jison -o lib/parser.js
+# Build manually with pegjs
+# requires pegjs command to be availble (npm i -g pegjs)
+pegjs lib/parser.pegjs lib/parser.js
 ```
 
-## Credits
+## History
 
-The jison parser source was originally written by
+**Version 1.x and lower** used jison parser source originally written by
 [tantaman](https://github.com/tantaman/) found in the
 [DATS-DAP](https://github.com/tantaman/DATS-DAP) repository.
 
+**Version 2.x and above** are using an updated original pegjs-based parser.
+This version offers better RFC-compliance and improved matching for
+complicated substring matches and escaped characters, as well as addressing
+some bugs found in the previous jison parser.
