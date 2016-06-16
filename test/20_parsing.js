@@ -17,6 +17,13 @@ describe('Parsing',function(){
     done();
   });
 
+  it('parses a funny character value',function(done){
+    var filter = '(orgUnit=%)';
+    var parsed = Filter.parse(filter);
+    parsed.toString().should.be.equal(filter);
+    done();
+  });
+
   it('parse more complex filter',function(done){
     var filter = '(&(sn=smith)(gn=john)(!(age=5)))';
     var parsed = Filter.parse(filter);
