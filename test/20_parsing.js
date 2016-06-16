@@ -61,5 +61,11 @@ describe('Parsing',function(){
     done();
   });
 
+  it('allows whitespace',function(done){
+    var filter = ' (&  (sn=smith) \n )  ';
+    Filter.parse(filter).toString().should.be.equal('(&(sn=smith))');
+    done();
+  });
+
 });
 
