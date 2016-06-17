@@ -74,5 +74,17 @@ describe('Parsing',function(){
     done();
   });
 
+  it('parses a single filter without parenthesis',function(done){
+    var filter = 'sn=smith';
+    Filter.parse(filter).toString().should.be.equal('(sn=smith)');
+    done();
+  });
+
+  it('allows whitespace on single filter without parenthesis',function(done){
+    var filter = '\n sn=smith ';
+    Filter.parse(filter).toString().should.be.equal('(sn=smith)');
+    done();
+  });
+
 });
 
