@@ -81,6 +81,17 @@ var input = '(&(givenName=jenny)(sn=jensen))';
 Filter.parse(input);
 ```
 
+### Simplify a filter
+
+The `.simplify()` method will reduce any AND or OR filters that have only
+one child/condition and replace them with that filter. NOT filters, and
+any other filters will remain intact.
+
+```javascript
+var input = '(&(uid=jenny))';
+Filter.parse(input).simplify().toString() // => '(uid=jenny)'
+```
+
 ### Output/print
 
 Whether you've created a filter programatically or by parsing a filter, you
