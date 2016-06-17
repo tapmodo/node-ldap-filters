@@ -60,7 +60,7 @@ var filter = Filter.attribute('cn').raw(match_value);
 match_value == '*James \\28Jimmy\\29*' // true
 ```
 
-#### Aggregate methods
+#### Logical/Aggregate methods
 
 Simple filters can be aggregated with AND, OR, and NOT:
 
