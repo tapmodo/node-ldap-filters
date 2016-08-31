@@ -3,6 +3,8 @@ node-ldap-filters
 
 **Build, generate, parse, and evaluate LDAP filters**
 
+[![Build Status](https://travis-ci.org/tapmodo/node-ldap-filters.svg?branch=master)](https://travis-ci.org/tapmodo/node-ldap-filters)
+
 A library for working with Lightweight Directory Access Protocol
 (LDAP) filters based on [RFC 4515](http://tools.ietf.org/html/rfc4515).
 
